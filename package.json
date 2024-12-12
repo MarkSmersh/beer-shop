@@ -1,0 +1,15 @@
+{
+  "name": "beer-shop",
+  "version": "1.0.0",
+  "description": "Sklep Piwa",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx @11ty/eleventy --serve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

@@ -1,3 +1,7 @@
+# @11ty/eleventy
+
+_site
+
 # Logs
 logs
 *.log
