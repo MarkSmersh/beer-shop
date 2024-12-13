@@ -25,7 +25,10 @@ title: Sklep <Piwo>
                 --secondary-text: #111;
                 --accent: #fad800;
                 --br: 8px;
-
+                
+                --primary-alpha: rgba(11, 11, 11, .2);
+                --secondary-alpha: rgba(255, 255, 212, .2); 
+                
                 .dark {
                     --primary: #fad800;
                     --secondary: #111111;
@@ -52,10 +55,10 @@ title: Sklep <Piwo>
                 align-items: center;
                 flex-direction: column;
                 gap: 16px;
-                height: 170px;
+                height: 150px;
 
                 img {
-                    height: 100px;
+                    height: 80px;
                 }
 
                 .list {
@@ -108,10 +111,43 @@ title: Sklep <Piwo>
                     gap: 16px;
                     flex-direction: column;
                 }
+
+                .right {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 16px;
+
+                    .newsletter {
+                        display: grid;
+                        grid: auto / 8fr 3fr;
+                        gap: 8px;
+                    }
+                }
+            }
+
+            input {
+                padding: 8px 8px;
+                border-radius: var(--br);
+            }
+
+            button {
+                border-radius: var(--br);
+                background-color: var(--secondary);
+                font-weight: 600;
+                color: var(--primary);
+                border: 1px solid var(--secondary);
+                transition: .2s;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: transparent;
+                color: var(--secondary);
             }
 
             main {
-                min-height: calc(100vh - 170px);
+                min-height: calc(100vh - 150px);
             }
         </style>
     </head>
@@ -146,30 +182,61 @@ title: Sklep <Piwo>
                     widoczna w każdym oferowanym produkcie. Dbamy o najwyższą
                     jakość i zadowolenie naszych klientów.
                 </p>
+
+                <div>
+                    <blockquote cite="github.com/marksmersh">
+                        <i>"Dobry sprzedawca nigdy nie używa swojego produktu. Ja piję red bulla."</i>
+                    </blockquote>
+                    <p>- Mark Smotkin, <cite>Autor Sklepu &lt;Piwo&gt;</cite>.</p>
+                </div>
                 <i>
                     <p class="legal">
-                        <span id="year"></span>. Sklep &lt;Piwo&gt;. Wszelkie prawa zastrzeżone.<br />Zakaz
-                        sprzedaży alkoholu osobom poniżej 18 roku życia.
+                        <span id="year"></span>. Sklep &lt;Piwo&gt;. Wszelkie
+                        prawa zastrzeżone.<br />Zakaz sprzedaży alkoholu osobom
+                        poniżej 18 roku życia.
                     </p>
                 </i>
             </div>
             <div class="right">
                 <p>Podpisz się na naszą rozsylkę stosownie nowości z piwem.</p>
-                <div class="newsletter">
-                    <form action="">
-                        <input name="email" />
-
-                    </form>
-                </div>
+                <form
+                    class="newsletter"
+                    action="javascript:"
+                    onsubmit="emailToLocalStorage(email)"
+                >
+                    <input
+                        id="email-footer"
+                        type="email"
+                        name="email"
+                        autocomplete="email"
+                    />
+                    <button type="submit">Podpisać się</button>
+                </form>
             </div>
         </footer>
     </body>
 
     <script>
-        // Niektóre skrypty są wywolane po lodowaniu strony
+        // Niektóre skrypty są wywolane po ladowaniu strony
 
         document.addEventListener("DOMContentLoaded", (e) => {
-            document.getElementById("year").textContent = new Date().getFullYear()
-        })
+            document.getElementById("year").textContent =
+                new Date().getFullYear();
+
+            const email = localStorage.getItem("email");
+
+            document.getElementById("email-footer").value = email ? email : "";
+        });
+
+        // Po wywulaniu formy email jest zapisany do localstorage
+        // Dlaczego tak? Po przykolu
+
+        function emailToLocalStorage(e) {
+            const email = e.value;
+
+            localStorage.setItem("email", email);
+
+            window.location.replace("/pages/newsletter");
+        }
     </script>
 </html>

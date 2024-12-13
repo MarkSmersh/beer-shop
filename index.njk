@@ -2,6 +2,140 @@
 layout: base.njk
 ---
 
-<div>
-    {% user "Zach Leatherman", "zachleat" %}
-</div>
+<style>
+    main {
+        background: url("/assets/piwko_perla.png");
+        background-size: cover;
+        background-position: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        position: relative;
+        transition: .5s;
+    }
+
+    .baza {
+        margin: 0 100px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 50%;
+        background-color: var(--secondary-alpha);
+        border-radius: var(--br);
+        backdrop-filter: blur(10px) brightness(80%);
+        padding: 32px;
+        color: var(--primary-text);
+
+        .title {
+            font-size: 30px;
+        }
+
+        .description {
+            font-size: 18px;
+        }
+    }
+
+    #selectors {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        display: flex;
+        gap: 8px;
+    }
+
+    .selector {
+        padding: 8px 16px;
+    }
+
+    .active {
+        background: var(--secondary-alpha);
+        color: var(--primary-text);
+    }
+</style>
+
+<main id="main">
+    <div class="baza">
+        <p class="title">
+            Jedna puszka piwa przybliża nas do szczęścia,<br />staj szczęśliwym
+            - wypij piwo 🍺!
+        </p>
+        <p class="description">
+            Sklep &lt;Piwo&gt; w swoim asortymencie ma wiele dobrych piw na
+            każdy dzień, jaki zrobią ciężky dzięń łatwiejszym, a dobry
+            odpoczynek liepszym.<br /><br />Ale wszystkie naszi klienci
+            rozumieją, że piwko muszi być dobrym, więc my mamy tylko najliepsze
+            piwka ze wszystkiego świata!
+        </p>
+    </div>
+    <div id="selectors">
+        {# <button class="selector">1</button>
+        <button class="selector">2</button> #}
+    </div>
+</main>
+
+<script>
+    const images = ["/assets/piwko_perla.png", "/assets/piwko_rom.png", "/assets/piwko_prosto.png", "/assets/piwko_nice.png", "/assets/piwko_piwooooo.png"];
+    
+    const imageContainer = document.getElementById("main");
+    const timePerImage = 5000; // ms 
+    const startFrom = 0;
+    let currentImage = startFrom;
+
+    function setImageByIndex(index) {
+        let indexToSet = index;
+
+        if (indexToSet > (images.length - 1)) {
+            indexToSet = 0;
+        }
+
+        imageContainer.style.backgroundImage = `url(${images[indexToSet]})`;
+
+        const selectors = document.getElementsByClassName("selector");
+
+        for (let i = 0; i < selectors.length; i++) {
+            const selector = selectors[i];
+            
+            if (i === indexToSet) {
+                selector.classList.add("active");
+            } else {
+                selector.classList.remove("active");
+            }
+        }
+
+        currentImage = indexToSet;
+    }
+
+
+    async function infiniteVoid(index) {
+        setImageByIndex(index);
+
+        await new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(null);
+            }, timePerImage)
+        });
+
+        infiniteVoid(currentImage + 1);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        infiniteVoid(startFrom);
+
+        const selectorsWrapper = document.getElementById("selectors");
+
+        for (let i = 0; i < images.length; i++) {
+            const newSelector = document.createElement("button");
+
+            newSelector.classList.add("selector");
+            newSelector.textContent = i+1;
+            newSelector.addEventListener("click", () => setImageByIndex(i));
+
+            if (i === startFrom) {
+                newSelector.classList.add("active");
+            }
+
+            selectorsWrapper.appendChild(newSelector);
+        }
+    })
+</script>

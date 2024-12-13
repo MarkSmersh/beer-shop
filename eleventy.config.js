@@ -7,6 +7,5 @@ export default function(eleventyConfig) {
       </div>`;
     });
 
-    eleventyConfig.addPassthroughCopy("./assets/ico.png")
-    eleventyConfig.addPassthroughCopy("./assets/logo.png")
+    eleventyConfig.addPassthroughCopy("./assets/");
   };
