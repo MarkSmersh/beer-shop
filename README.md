@@ -9,7 +9,7 @@ I won't write HTML boilerplate. I'm not cracked so much
 
 - [x] Tematyka _(13.12.2024)_ 
 - [ ] Strona zawiera minimum 5 podstron
-- [ ] Strona zawiera działające menu nawigacyjne
+- [x] Strona zawiera działające menu nawigacyjne
 - [ ] Strona zawiera działający formularz
 - [x] Strona zwiera grafikę powiązaną z jej tematyką pobraną z Internetu na licencji CC lub stworzoną
 samodzielnie (maximum przy autorskiej grafice) _(13.12.2024)_ 
@@ -17,7 +17,7 @@ samodzielnie (maximum przy autorskiej grafice) _(13.12.2024)_
 - [ ] Poprawne wykorzystanie znaczników (np. oznaczanie cytatów)
 - [x] Wykorzystanie JavaScript (maximum przy autorskim skrypcie) _(13.12.2024)_
 - [ ] Responsywność strony
-- [ ] Wersje językowe strony 0–1 pkt.
+- [ ] Wersje językowe strony
 - [ ] Wrażenie ogólne przy oglądaniu strony (estetyka, czytelność, dopasowanie kolorystyki do treści
 strony) – User Experience
 - [ ] Kompletność dokumentacji projektu

@@ -1,0 +1,9 @@
+---
+pagination:
+  data: catalog
+  size: 1
+  alias: beer
+permalink: "/pages/catalog/{{ beer.id | slugify }}/"
+---
+
+{{ beer.title }} is {{ beer.description }}

@@ -1,5 +1,147 @@
 ---
 layout: base.njk
+pagination:
+    data: catalog
+    size: 20
 ---
 
-<main></main>
+<style>
+    main {
+        display: grid;
+        grid: auto / repeat(4, 1fr);
+        padding: 100px 100px;
+        gap: 64px 64px;
+    }
+
+    .product {
+        background-color: var(--secondary);
+        border-radius: var(--br);
+        width: fit-content;
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        transition: 0.2s;
+
+        img {
+            position: absolute;
+            height: 200px;
+            top: -30px;
+        }
+
+        .shadow {
+            box-shadow: 0px 0px 5px 0px black;
+            width: 50%;
+            height: 20px;
+            border-radius: 100%;
+            background-color: black;
+            opacity: 20%;
+            position: absolute;
+            top: 150px;
+        }
+
+        .space {
+            height: 200px;
+        }
+
+        .content {
+            color: var(--secondary-text);
+            display: flex;
+            flex-direction: column;
+            width: calc(100% - 40px);
+            margin: 0 20px 20px 20px;
+            justify-content: space-between;
+            flex: 1;
+            gap: 16px;
+
+            .info {
+                display: flex;
+                gap: 8px;
+                flex-direction: column;
+
+                .title {
+                    font-size: 20px;
+                    font-weight: 600;
+                    width: 100%;
+                }
+            }
+
+            .data {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+                .price {
+                    font-size: 18px;
+                    font-weight: 600;
+                    width: 100%;
+                }
+
+                .goto {
+                    width: 100%;
+                    background-color: var(--primary);
+                    padding: 8px 0px;
+                    color: var(--primary-text);
+                    display: flex;
+                    justify-content: center;
+                    gap: 8px;
+                    border: 1px solid var(--primary);
+                    align-self: flex-end;
+                    height: fit-content;
+                    transition: 0.5s;
+                }
+
+                .goto:hover {
+                    background-color: transparent;
+                    color: var(--secondary-text);
+                }
+            }
+        }
+
+        
+    }
+
+    @keyframes zalet {
+        0% {
+            display: none;
+        }
+        1% {
+            scale: 0%;
+        }
+    }
+
+    .product:hover {
+        scale: 110%;
+    }
+</style>
+
+
+<main>
+    {%- for beer in catalog %}
+        <div class="product">
+            <div class="shadow"></div>
+            <img src={{ "/assets/products/" + beer.image }} />
+            <div class="space"></div>
+            <div class="content">
+                <div class="info">
+                    <h4 class="title">{{ beer.title }}</h4>
+                    <p class="description">{{ beer.description }}</p>
+                </div>
+                <div class="data">
+                    <p class="price">{{ beer.price }} zł / szt.</p>
+                    <button slug={{ beer.id }} onclick="goToProduct(this)" class="goto">Przejdź do produktu</button>
+                </div>
+            </div>
+        </div>
+    {% endfor -%}
+</main>
+
+<script>
+    function goToProduct(button) {
+        const slug = button.attributes["slug"].value;
+
+        document.location.assign(`/pages/catalog/${slug}`);
+    }
+</script>
