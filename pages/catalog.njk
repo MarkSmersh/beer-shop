@@ -9,26 +9,27 @@ pagination:
     main {
         display: grid;
         grid: auto / repeat(4, 1fr);
+        /* grid-template: repeat(4, 1fr); */
         padding: 100px 100px;
-        gap: 64px 64px;
+        gap: 64px;
     }
 
     .product {
         background-color: var(--secondary);
         border-radius: var(--br);
-        width: fit-content;
         position: relative;
-        width: 100%;
         display: flex;
         justify-content: flex-start;
         align-items: center;
         flex-direction: column;
         transition: 0.2s;
+        padding: 20px;
 
         img {
             position: absolute;
             height: 200px;
-            top: -30px;
+            top: -35px;
+            transition: 0.2s;
         }
 
         .shadow {
@@ -40,83 +41,83 @@ pagination:
             opacity: 20%;
             position: absolute;
             top: 150px;
+            transition: 0.2s;
         }
 
         .space {
             height: 200px;
         }
-
-        .content {
-            color: var(--secondary-text);
-            display: flex;
-            flex-direction: column;
-            width: calc(100% - 40px);
-            margin: 0 20px 20px 20px;
-            justify-content: space-between;
-            flex: 1;
-            gap: 16px;
-
-            .info {
-                display: flex;
-                gap: 8px;
-                flex-direction: column;
-
-                .title {
-                    font-size: 20px;
-                    font-weight: 600;
-                    width: 100%;
-                }
-            }
-
-            .data {
-                display: flex;
-                flex-direction: column;
-                gap: 16px;
-
-                .price {
-                    font-size: 18px;
-                    font-weight: 600;
-                    width: 100%;
-                }
-
-                .goto {
-                    width: 100%;
-                    background-color: var(--primary);
-                    padding: 8px 0px;
-                    color: var(--primary-text);
-                    display: flex;
-                    justify-content: center;
-                    gap: 8px;
-                    border: 1px solid var(--primary);
-                    align-self: flex-end;
-                    height: fit-content;
-                    transition: 0.5s;
-                }
-
-                .goto:hover {
-                    background-color: transparent;
-                    color: var(--secondary-text);
-                }
-            }
-        }
-
-        
     }
 
-    @keyframes zalet {
-        0% {
-            display: none;
+    .content {
+        color: var(--secondary-text);
+        display: flex;
+        flex-direction: column;
+        width: calc(100% - 40px);
+        justify-content: space-between;
+        gap: 16px;
+        flex: 1;
+
+        .info {
+            display: flex;
+            gap: 8px;
+            flex-direction: column;
+
+            .title {
+                font-size: 20px;
+                font-weight: 600;
+                width: 100%;
+            }
+
+            .description {
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                width: 200px;
+                word-break: break-all;
+            }
         }
-        1% {
-            scale: 0%;
+
+        .data {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            .price {
+                font-size: 18px;
+                font-weight: 600;
+                width: 100%;
+            }
+
+            .goto {
+                width: 100%;
+                background-color: var(--primary);
+                padding: 8px 0px;
+                color: var(--primary-text);
+                display: flex;
+                justify-content: center;
+                gap: 8px;
+                border: 1px solid var(--primary);
+                align-self: flex-end;
+                height: fit-content;
+                transition: 0.2s;
+            }
+
+            .goto:hover {
+                background-color: transparent;
+                color: var(--secondary-text);
+            }
         }
     }
 
     .product:hover {
-        scale: 110%;
+        img, .shadow {
+            scale: 110%;
+            transform-origin: bottom;
+            transform: scale(110%);
+        }
     }
 </style>
-
 
 <main>
     {%- for beer in catalog %}
