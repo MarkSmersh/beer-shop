@@ -1,6 +1,6 @@
-# @11ty/eleventy
+# build
 
-_site
+build/
 
 # Logs
 logs

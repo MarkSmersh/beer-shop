@@ -1,15 +1,18 @@
 {
   "name": "beer-shop",
   "version": "1.0.0",
-  "description": "Sklep Piwa",
+  "description": "Project is written with the given rules (the are horrible), but bamboozled with static site generator.",
   "main": "index.js",
+  "dependencies": {
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^22.10.2",
+    "node-html-parser": "^7.0.1",
+    "tsx": "^4.19.2"
+  },
   "scripts": {
-    "dev": "npx @11ty/eleventy --serve"
+    "start": "tsx index.ts"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@11ty/eleventy": "^3.0.0"
-  }
+  "license": "ISC"
 }
