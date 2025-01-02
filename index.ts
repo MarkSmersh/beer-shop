@@ -9,6 +9,7 @@ const SCRIPT = "script"
 const EXT = "html"
 const ASSETS_DIR = "assets"
 const DATA_DIR = "data"
+const META_PREFIX = "meta"
 
 interface Directory {
     dir: string,
@@ -31,7 +32,6 @@ function scanDirectory(directory: string) {
 
 
     for (let i = 0; i < dir.length; i++) {
-
         const file = dir[i];
 
         const splitFile = file.split(".");
@@ -66,6 +66,55 @@ function scanDirectory(directory: string) {
     }
 }
 
+function applyMetaPage(page: string, dir: string)/* : string */ {
+    const htmlMetaRegex = /\{\{\s*((?:\w+\.?)+)\s*\}\}/gm;
+    const metaTags = [...page.matchAll(htmlMetaRegex)];
+
+    let newPage = page;
+
+    const deepness = dir.split(SRC_DIR).join("").split("/").length - 2
+
+    for (let i = 0; i < metaTags.length; i++) {
+        const [prefix, nounUnlowered, ...args] = metaTags[i][1].split(".");
+
+        const noun = nounUnlowered.toLowerCase();
+
+        if (prefix !== META_PREFIX) continue;
+
+        if (noun === "location") {
+            const relDir = "../".repeat(deepness)
+
+            newPage = newPage.replace(
+                metaTags[i][0],
+                deepness > 0 ? relDir.slice(0, relDir.length - 1) : "."
+            )
+        }
+
+        if (noun === "assets") {
+            newPage = newPage.replace(
+                metaTags[i][0],
+                "../".repeat(deepness) + "assets"
+            )
+        }
+
+        if (noun === "data") {
+            newPage = newPage.replace(
+                metaTags[i][0],
+                "../".repeat(deepness) + "data"
+            )
+        }
+
+        if (noun === "page") {
+            newPage = newPage.replace(
+                metaTags[i][0],
+                `index.${EXT}`
+            )
+        }
+    }
+
+    return newPage;
+}
+
 function buildPages(dirs: Directory[]) {
     const defaultLayout = dirs.find((d) => d.dir === "./" + SRC_DIR)
 
@@ -88,8 +137,8 @@ function buildPages(dirs: Directory[]) {
             const domLayout = parse(
                 fs.readFileSync(
                     layout
-                    ? `${dir}/${LAYOUT}.${EXT}`
-                    : `${defaultLayout?.dir}/${LAYOUT}.${EXT}`
+                        ? `${dir}/${LAYOUT}.${EXT}`
+                        : `${defaultLayout?.dir}/${LAYOUT}.${EXT}`
                 ).toString()
             )
 
@@ -116,6 +165,8 @@ function buildPages(dirs: Directory[]) {
             pageToBuild += `${scriptJs.toString()}\n`
             pageToBuild += "</script>\n"
         }
+
+        pageToBuild = applyMetaPage(pageToBuild, dir)
 
         if (!pageToBuild) {
             console.warn(`${dir}. Page is empty`)

@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Sklep &lt;Piwo&gt;</title>
-        <link rel="icon" href="./assets/ico.png" type="image/png" sizes="16x16" />
+        <link rel="icon" href="{{ meta.assets }}/ico.png" type="image/png" sizes="16x16" />
         <style>
             @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
@@ -143,23 +143,23 @@
     </head>
     <body>
         <header>
-            <a href="/">
-                <img src="../assets/logo.png" alt="logo" />
+            <a href="{{ meta.location }}/{{ meta.page }}">
+                <img src="{{ meta.assets }}/logo.png" alt="logo" />
             </a>
             <div class="navbar">
                 <nav>
                     <ul class="list">
                         <li>
-                            <a href="/">Strona głowna</a>
+                            <a href="{{ meta.location }}/{{ meta.page }}">Strona głowna</a>
                         </li>
                         <li>
-                            <a href="/catalog">Katalog</a>
+                            <a href="{{ meta.location }}/catalog/{{ meta.page }}">Katalog</a>
                         </li>
                         <li>
-                            <a href="/newsletter">Newsletter</a>
+                            <a href="{{ meta.location }}/newsletter/{{ meta.page }}">Newsletter</a>
                         </li>
                         <li>
-                            <a href="/contact">Kontakt</a>
+                            <a href="{{ meta.location }}/contact/{{ meta.page }}">Kontakt</a>
                         </li>
                     </ul>
                 </nav>
@@ -223,7 +223,7 @@
 
             localStorage.setItem("email", email);
 
-            window.location.assign("/newsletter");
+            window.location.assign("{{ meta.location }}/newsletter{{ meta.page }}");
         }
     </script>
 </html>
