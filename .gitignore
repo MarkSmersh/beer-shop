@@ -1,6 +1,7 @@
 # build
 
 build/
+temp/
 
 # Logs
 logs
