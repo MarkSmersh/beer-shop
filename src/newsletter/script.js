@@ -1,14 +1,17 @@
+/** 
+    * Po ladowaniu strony, zmienia znaczenie elementu z identyfikatorom email,
+    * jeżeli w localStorage istienie znaczenie o nazwie email.
+    * */
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("email").value = localStorage.getItem("email") ? localStorage.getItem("email") : "";
 })
 
 /**
+    * Zbiera informację z formularzu i zapisuje dane do konsoli.
     * @param {HTMLInputElement[]} args
     */
 function displayForm(...args) {
     const [email, firstname, surname, sex, usaBeer, chechBeer, polishBeer] = args;
-
-    // Do konsoli są zapisywane dane z <form/>
 
     console.log(`Poczta elektronowa: ${email.value}`)
     console.log(`Imię: ${firstname.value}`)

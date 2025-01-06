@@ -27,7 +27,7 @@
                 --secondary-text: #fff;
                 --accent: #fad800;
             }
-       }
+        }
 
         * {
             margin: 0;
@@ -207,8 +207,11 @@
     </footer>
 </body>
 <script>
-    // Niektóre skrypty są wywolane po ladowaniu strony
-
+    /**
+        * Po ladowaniu strony, dodaje do elementu o id year
+        * bieżący rok i dodaje do elementy o id email-footer
+        * znaczenie email z localStorage
+        */
     document.addEventListener("DOMContentLoaded", (e) => {
         document.getElementById("year").textContent =
             new Date().getFullYear();
@@ -218,8 +221,11 @@
         document.getElementById("email-footer").value = email ? email : "";
     });
 
-    // Po wywulaniu formy email jest zapisany do localstorage
-    // Dlaczego tak? Po przykolu
+    /**
+       * Przy zgłaszaniu formy, znaczenie z elementy <input/>
+       * do localStorage o nazwie email
+       * @type {HTMLInputElement} e
+       */
 
     function emailToLocalStorage(e) {
         const email = e.value;

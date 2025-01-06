@@ -2,7 +2,6 @@
     main {
         display: grid;
         grid: auto / repeat(4, 1fr);
-        /* grid-template: repeat(4, 1fr); */
         padding: 100px 100px;
         gap: 64px 32px;
     }
@@ -63,10 +62,6 @@
             }
 
             .description {
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                width: 200px;
                 word-break: break-all;
             }
         }
@@ -77,9 +72,10 @@
             gap: 16px;
 
             .price {
-                font-size: 18px;
+                font-size: 20px;
                 font-weight: 600;
                 width: 100%;
+                font-weight: 600;
             }
 
             .goto {

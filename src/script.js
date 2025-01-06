@@ -5,6 +5,11 @@ const timePerImage = 5000; // ms
 const startFrom = 0;
 let currentImage = startFrom;
 
+/**
+    * Wystawia zdjęcie w zależności od wprowadzonego indeksu,
+    * gdzie indeks to i w images[i].
+    * @param {number} index
+    */
 function setImageByIndex(index) {
     let indexToSet = index;
 
@@ -30,6 +35,11 @@ function setImageByIndex(index) {
 }
 
 
+/**
+    * Funkcja rekursywna, jaka wystawia następne indeksy dla images,
+    * każdych timerPerImage milisekund.
+    * @param {number} index
+    */
 async function infiniteVoid(index) {
     setImageByIndex(index);
 
@@ -42,6 +52,11 @@ async function infiniteVoid(index) {
     infiniteVoid(currentImage + 1);
 }
 
+/**
+    * Po ladowaniu strony, zaczyna funkcję infinitiVoid,
+    * dodaje do elementu o id selectors naciski, ilość
+    * ktorych jest równa ilości elementów w tablicę images.
+    */
 document.addEventListener("DOMContentLoaded", () => {
     infiniteVoid(startFrom);
 
