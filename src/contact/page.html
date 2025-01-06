@@ -1,0 +1,77 @@
+<style>
+    main {
+        display: grid;
+        grid: auto / 4fr 10fr;
+    }
+
+    .sidebar {
+        background: var(--primary);
+        color: var(--primary-text);
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .sidebar .block:first-child {
+        margin-bottom: 20px;
+    }
+
+    .block {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .location {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        color: var(--secondary-text);
+    }
+
+    .maps {
+        flex: 1;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    a {
+        color: var(--primary-text);
+    }
+</style>
+
+<main>
+    <div class="sidebar">
+        <div class="block">
+            <h2>Kontakt</h2>
+        </div>
+        <div class="block">
+            <h3>Godziny pracy</h3>
+            <p>Poniedziałek - Piątek: 9:00 - 19:00</p>
+            <p>Sobota: 9:00 - 15:00</p>
+            <p>Niedziela: Zamknięto</p>
+        </div>
+        <div class="block">
+            <h3>Lokalizacja</h3>
+            <p><a target="_blank" href="https://maps.app.goo.gl/m7Aya4zMV2d7DUA97">Nadbystrzycka 44, 20-501 Lublin</a>
+            </p>
+        </div>
+        <div class="block">
+            <h3>Dane kontakowe</h3>
+            <p><a href="mailto:sklep-piwo@proton.me">sklep-piwo@proton.me</a>
+            <p><a href="tel:+48123456789">+48 123 456 789</a>
+            </p>
+        </div>
+    </div>
+    <div class="location">
+        <h1>Tutaj możesz znajdować nasz sklep!</h1>
+        <div class="maps">
+            <iframe
+                src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;coord=51.235015624615855, 22.54593931022843&amp;q=Nadbystrzycka%2044,%2020-501%20Lublin&amp;ie=UTF8&amp;t=&amp;z=17&amp;iwloc=B&amp;output=embed"
+                name="gmaps" allowTransparency="true" scrolling="no" frameborder="0" width="100%" height="100%">
+            </iframe>
+        </div>
+    </div>
+</main>

@@ -116,19 +116,26 @@ function makeDataPages(dirs: Directory[]) {
     const data = dirs.filter((d) => d.data === true)
 
     for (let i = 0; i < data.length; i++) {
-        const curPage = data[i];
-        const json = JSON.parse(fs.readFileSync(`${curPage.dir}/${DATA}.json`).toString())
+        const { dir } = data[i];
+        const json = JSON.parse(fs.readFileSync(`${dir}/${DATA}.json`).toString())
 
         if (json.length <= 0) {
             continue;
         }
 
         for (let j = 0; j < json.length; j++) {
-            let page = fs.readFileSync(`${curPage.dir}/${DATA}.${EXT}`).toString();
+            let page = fs.readFileSync(`${dir}/${DATA}.${EXT}`).toString();
 
             page = applyDataPage(page, json, j);
 
-            const newDir = `${curPage.dir}/${j}`
+            if (fs.existsSync(`${dir}/${DATA}.js`)) {
+                const scriptJs = fs.readFileSync(`${dir}/${DATA}.js`)
+
+                page += "<script>\n"
+                page += `${scriptJs.toString()}\n`
+                page += "</script>\n"
+            }
+            const newDir = `${dir}/${j}`
             fs.mkdirSync(newDir, { recursive: true })
 
             fs.writeFileSync(`${newDir}/${PAGE}.${EXT}`, page)
@@ -275,7 +282,7 @@ function main() {
 
     copyFolder(DATA_DIR);
 
-    // fs.rmSync("./" + TEMP_DIR, { force: true, recursive: true });
+    fs.rmSync("./" + TEMP_DIR, { force: true, recursive: true });
 }
 
 main()

@@ -1,229 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Sklep &lt;Piwo&gt;</title>
-        <link rel="icon" href="{{ meta.assets }}/ico.png" type="image/png" sizes="16x16" />
-        <style>
-            @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
-            :root {
-                --primary: #111111;
-                --secondary: #ffffd4;
-                --primary-text: #fff;
-                --secondary-text: #111;
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sklep &lt;Piwo&gt;</title>
+    <link rel="icon" href="{{ meta.assets }}/ico.png" type="image/png" sizes="16x16" />
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+        :root {
+            --primary: #111111;
+            --secondary: #ffffd4;
+            --primary-text: #fff;
+            --secondary-text: #111;
+            --accent: #fad800;
+            --br: 8px;
+
+            --primary-alpha: rgba(11, 11, 11, .2);
+            --secondary-alpha: rgba(255, 255, 212, .2);
+
+            .dark {
+                --primary: #fad800;
+                --secondary: #111111;
+                --primary-text: #111;
+                --secondary-text: #fff;
                 --accent: #fad800;
-                --br: 8px;
-                
-                --primary-alpha: rgba(11, 11, 11, .2);
-                --secondary-alpha: rgba(255, 255, 212, .2); 
-                
-                .dark {
-                    --primary: #fad800;
-                    --secondary: #111111;
-                    --primary-text: #111;
-                    --secondary-text: #fff;
-                    --accent: #fad800;
-                }
             }
+       }
 
-            * {
-                margin: 0;
-                padding: 0;
-                border: 0;
-            }
-
-            body {
-                color: var(--secondary);
-                font-family: "Lato", serif;
-            }
-
-            header {
-                background-color: var(--secondary);
-                display: flex;
-                align-items: center;
-                flex-direction: column;
-                gap: 16px;
-                height: 150px;
-
-                img {
-                    height: 80px;
-                }
-
-                .list {
-                    list-style: none;
-                    display: flex;
-                    list-style: none;
-                    gap: 16px;
-                    height: 50px;
-
-                    li {
-                        background-color: var(--primary);
-                        border-radius: var(--br);
-                        padding: 8px 16px;
-                        display: flex;
-                        align-items: center;
-                        height: fit-content;
-                        transition: 0.2s;
-                        border: 1px solid var(--primary);
-                        font-weight: 600;
-                    }
-
-                    li > a {
-                        color: var(--primary-text);
-                    }
-
-                    li:hover {
-                        background-color: var(--secondary);
-                    }
-
-                    li:hover > a {
-                        color: var(--secondary-text);
-                    }
-                }
-
-                a {
-                    text-wrap: nowrap;
-                    text-decoration: none;
-                }
-            }
-
-            footer {
-                background-color: var(--primary);
-                padding: 50px 100px;
-                display: grid;
-                grid: auto / 1fr 1fr;
-                gap: 32px;
-
-                .left {
-                    display: flex;
-                    gap: 16px;
-                    flex-direction: column;
-                }
-
-                .right {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    gap: 16px;
-
-                    .newsletter {
-                        display: grid;
-                        grid: auto / 8fr 3fr;
-                        gap: 8px;
-                    }
-                }
-            }
-
-            input {
-                padding: 8px 8px;
-                border-radius: var(--br);
-            }
-
-            button {
-                border-radius: var(--br);
-                background-color: var(--secondary);
-                font-weight: 600;
-                color: var(--primary);
-                border: 1px solid var(--secondary);
-                transition: .2s;
-                cursor: pointer;
-            }
-
-            button:hover {
-                background-color: transparent;
-                color: var(--secondary);
-            }
-
-            main {
-                min-height: calc(100vh - 150px);
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <a href="{{ meta.location }}/{{ meta.page }}">
-                <img src="{{ meta.assets }}/logo.png" alt="logo" />
-            </a>
-            <div class="navbar">
-                <nav>
-                    <ul class="list">
-                        <li>
-                            <a href="{{ meta.location }}/{{ meta.page }}">Strona głowna</a>
-                        </li>
-                        <li>
-                            <a href="{{ meta.location }}/catalog/{{ meta.page }}">Katalog</a>
-                        </li>
-                        <li>
-                            <a href="{{ meta.location }}/newsletter/{{ meta.page }}">Newsletter</a>
-                        </li>
-                        <li>
-                            <a href="{{ meta.location }}/contact/{{ meta.page }}">Kontakt</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-        <section id="child"></section>
-        <footer>
-            <div class="left">
-                <p>
-                    Dziękujemy za odwiedzenie naszego sklepu &lt;Piwo&gt;! Nasza
-                    pasja do wyjątkowych smaków oraz lokalnych browarów jest
-                    widoczna w każdym oferowanym produkcie. Dbamy o najwyższą
-                    jakość i zadowolenie naszych klientów.
-                </p>
-                <div>
-                    <blockquote cite="github.com/marksmersh">
-                        <i>"Dobry sprzedawca nigdy nie używa swojego produktu. Ja piję red bulla."</i>
-                    </blockquote>
-                    <p>
-                        - Mark Smotkin, <cite>Autor Sklepu &lt;Piwo&gt;</cite>.
-                    </p>
-                </div>
-                <i>
-                    <p class="legal">
-                        <span id="year"></span>. Sklep &lt;Piwo&gt;. Wszelkie
-                        prawa zastrzeżone.
-                        <br />
-                        Zakaz sprzedaży alkoholu osobom
-                        poniżej 18 roku życia.
-                    </p>
-                </i>
-            </div>
-            <div class="right">
-                <p>Podpisz się na naszą rozsylkę stosownie nowości z piwem.</p>
-                <form class="newsletter"
-                      action="javascript:"
-                      onsubmit="emailToLocalStorage(email)">
-                    <input id="email-footer" type="email" name="email" autocomplete="email" />
-                    <button type="submit">Podpisać się</button>
-                </form>
-            </div>
-        </footer>
-    </body>
-    <script>
-        // Niektóre skrypty są wywolane po ladowaniu strony
-
-        document.addEventListener("DOMContentLoaded", (e) => {
-            document.getElementById("year").textContent =
-                new Date().getFullYear();
-
-            const email = localStorage.getItem("email");
-
-            document.getElementById("email-footer").value = email ? email : "";
-        });
-
-        // Po wywulaniu formy email jest zapisany do localstorage
-        // Dlaczego tak? Po przykolu
-
-        function emailToLocalStorage(e) {
-            const email = e.value;
-
-            localStorage.setItem("email", email);
-
-            window.location.assign("{{ meta.location }}/newsletter{{ meta.page }}");
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
         }
-    </script>
+
+        body {
+            color: var(--secondary);
+            font-family: "Lato", serif;
+            accent-color: var(--secondary);
+        }
+
+        header {
+            background-color: var(--secondary);
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 16px;
+            height: 150px;
+            z-index: 69;
+            position: relative;
+
+            img {
+                height: 80px;
+            }
+
+            .list {
+                list-style: none;
+                display: flex;
+                list-style: none;
+                gap: 16px;
+                height: 50px;
+
+                li {
+                    background-color: var(--primary);
+                    border-radius: var(--br);
+                    padding: 8px 16px;
+                    display: flex;
+                    align-items: center;
+                    height: fit-content;
+                    transition: 0.2s;
+                    border: 1px solid var(--primary);
+                    font-weight: 600;
+                }
+
+                li>a {
+                    color: var(--primary-text);
+                }
+
+                li:hover {
+                    background-color: var(--secondary);
+                }
+
+                li:hover>a {
+                    color: var(--secondary-text);
+                }
+            }
+
+            a {
+                text-wrap: nowrap;
+                text-decoration: none;
+            }
+        }
+
+        footer {
+            background-color: var(--primary);
+            padding: 50px 100px;
+            display: grid;
+            grid: auto / 1fr 1fr;
+            gap: 32px;
+
+            .left {
+                display: flex;
+                gap: 16px;
+                flex-direction: column;
+            }
+
+            .right {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 16px;
+
+                .newsletter {
+                    display: grid;
+                    grid: auto / 8fr 3fr;
+                    gap: 8px;
+                }
+            }
+        }
+
+        #email-footer {
+            padding: 8px 8px;
+            border-radius: var(--br);
+        }
+
+        button {
+            border-radius: var(--br);
+            background-color: var(--secondary);
+            font-weight: 600;
+            color: var(--primary);
+            border: 1px solid var(--secondary);
+            transition: .2s;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: transparent;
+            color: var(--secondary);
+        }
+
+        main {
+            min-height: calc(100vh - 150px);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="{{ meta.location }}/{{ meta.page }}">
+            <img src="{{ meta.assets }}/logo.png" alt="logo" />
+        </a>
+        <div class="navbar">
+            <nav>
+                <ul class="list">
+                    <li>
+                        <a href="{{ meta.location }}/{{ meta.page }}">Strona głowna</a>
+                    </li>
+                    <li>
+                        <a href="{{ meta.location }}/catalog/{{ meta.page }}">Katalog</a>
+                    </li>
+                    <li>
+                        <a href="{{ meta.location }}/newsletter/{{ meta.page }}">Newsletter</a>
+                    </li>
+                    <li>
+                        <a href="{{ meta.location }}/contact/{{ meta.page }}">Kontakt</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section id="child"></section>
+    <footer>
+        <div class="left">
+            <p>
+                Dziękujemy za odwiedzenie naszego sklepu &lt;Piwo&gt;! Nasza
+                pasja do wyjątkowych smaków oraz lokalnych browarów jest
+                widoczna w każdym oferowanym produkcie. Dbamy o najwyższą
+                jakość i zadowolenie naszych klientów.
+            </p>
+            <div>
+                <blockquote cite="github.com/marksmersh">
+                    <i>"Dobry sprzedawca nigdy nie używa swojego produktu. Ja piję red bulla."</i>
+                </blockquote>
+                <p>
+                    - Mark Smotkin, <cite>Autor Sklepu &lt;Piwo&gt;</cite>.
+                </p>
+            </div>
+            <i>
+                <p class="legal">
+                    <span id="year"></span>. Sklep &lt;Piwo&gt;. Wszelkie
+                    prawa zastrzeżone.
+                    <br />
+                    Zakaz sprzedaży alkoholu osobom
+                    poniżej 18 roku życia.
+                </p>
+            </i>
+        </div>
+        <div class="right">
+            <p>Podpisz się na naszą rozsylkę stosownie nowości z piwem.</p>
+            <form class="newsletter" action="javascript:" onsubmit="emailToLocalStorage(email)">
+                <input id="email-footer" type="email" name="email" autocomplete="email" />
+                <button type="submit">Podpisać się</button>
+            </form>
+        </div>
+    </footer>
+</body>
+<script>
+    // Niektóre skrypty są wywolane po ladowaniu strony
+
+    document.addEventListener("DOMContentLoaded", (e) => {
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        const email = localStorage.getItem("email");
+
+        document.getElementById("email-footer").value = email ? email : "";
+    });
+
+    // Po wywulaniu formy email jest zapisany do localstorage
+    // Dlaczego tak? Po przykolu
+
+    function emailToLocalStorage(e) {
+        const email = e.value;
+
+        localStorage.setItem("email", email);
+
+        window.location.assign("{{ meta.location }}/newsletter/{{ meta.page }}");
+    }
+</script>
+
 </html>
