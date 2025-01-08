@@ -55,7 +55,8 @@
                 height: 80px;
             }
 
-            .list {
+            .list,
+            .menu-list {
                 list-style: none;
                 display: flex;
                 list-style: none;
@@ -143,6 +144,65 @@
         main {
             min-height: calc(100vh - 150px);
         }
+
+        .menu-button {
+            display: none;
+            border-radius: var(--br);
+            background-color: var(--primary);
+            font-weight: 600;
+            color: var(--primary-text);
+            border: 1px solid var(--secondary);
+            transition: .2s;
+            cursor: pointer;
+            padding: 10px 16px;
+        }
+
+        #menu {
+            display: none;
+        }
+
+        @media screen and (max-width: 800px) {
+            .list {
+                display: none !important;
+            }
+
+            .menu-button {
+                display: flex;
+                flex: 1;
+            }
+
+            .menu-list {
+                flex-direction: column;
+                height: 100% !important;
+            }
+
+            #menu[open] {
+                display: flex;
+                flex-direction: column;
+                width: calc(100% - 80px);
+                margin: 20px;
+                height: calc(100% - 80px);
+                padding: 20px;
+                border-radius: var(--br);
+                background-color: var(--secondary);
+                text-align: center !important;
+            }
+
+            footer {
+                display: flex;
+                flex-direction: column;
+                padding: 50px 20px;
+            }
+
+            li>a {
+                flex: 1;
+            }
+
+            header {
+                gap: 0px;
+                justify-content: space-evenly;
+            }
+        }
     </style>
 </head>
 
@@ -153,6 +213,24 @@
         </a>
         <div class="navbar">
             <nav>
+                <button class="menu-button" onclick="toggleMenu(true)">Menu</button>
+                <dialog id="menu">
+                    <ul class="menu-list">
+                        <li>
+                            <a href="{{ meta.location }}/{{ meta.page }}">Strona głowna</a>
+                        </li>
+                        <li>
+                            <a href="{{ meta.location }}/catalog/{{ meta.page }}">Katalog</a>
+                        </li>
+                        <li>
+                            <a href="{{ meta.location }}/newsletter/{{ meta.page }}">Newsletter</a>
+                        </li>
+                        <li>
+                            <a href="{{ meta.location }}/contact/{{ meta.page }}">Kontakt</a>
+                        </li>
+                    </ul>
+                    <button class="menu-button" onclick="toggleMenu(false)">Zamknąc</button>
+                </dialog>
                 <ul class="list">
                     <li>
                         <a href="{{ meta.location }}/{{ meta.page }}">Strona głowna</a>
@@ -233,6 +311,24 @@
         localStorage.setItem("email", email);
 
         window.location.assign("{{ meta.location }}/newsletter/{{ meta.page }}");
+    }
+
+    /**
+       * Przełącza okno dialogowe o id menu w zależnosci od zmiannej toOpen 
+       * @type {boolean} toOpen
+       */
+    function toggleMenu(toOpen) {
+        const menu = document.getElementById("menu");
+
+        if (toOpen && menu.hasAttribute("open")) {
+            return;
+        }
+
+        if (toOpen) {
+            menu.showModal();
+        } else {
+            menu.close();
+        }
     }
 </script>
 
