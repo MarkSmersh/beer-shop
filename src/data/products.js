@@ -2,7 +2,7 @@ const products = [
     {
         "id": 0,
         "title": "Pierla miodowa",
-        "description": "Pierla miodowa to piwko dla tych, czyj gust nie jest mordowany przez inny piwky Perla. Mózg których jest po prostu zniszczony przez te gówno. Krótko mowiąc, jako lubricant do BDSMu.",
+        "description": "Perła Miodowa to wyjątkowe piwo o delikatnym smaku, które łączy tradycyjny lager z nutą naturalnego miodu. Charakteryzuje się subtelną słodyczą oraz łagodnym aromatem, co sprawia, że jest idealnym wyborem dla osób poszukujących piwa o nieco słodszej, ale wciąż orzeźwiającej formule. Dzięki harmonijnej kompozycji smaków Perła Miodowa doskonale sprawdza się zarówno podczas spotkań towarzyskich, jak i chwil relaksu w pojedynkę.",
         "image": "0.png",
         "volume": 500,
         "abv": 5.2,
