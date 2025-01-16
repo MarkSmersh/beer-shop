@@ -18,8 +18,8 @@ const products = [
         "volume": 1000,
         "abv": 6.8,
         "country": "Washington, USA",
-        "purpose": "Do normalnego użytku, bardzo dobra",
-        "price": 5.23
+        "purpose": "Do normalnego użytku, bardzo dobre",
+        "price": 10.25
     },
     {
         "id": 2,
@@ -29,40 +29,51 @@ const products = [
         "volume": 500,
         "abv": 13.0,
         "country": "Nebraska, USA",
-        "purpose": "Ou yeah, AMERICA DUCK YEAH",
-        "price": 5.23
+        "purpose": "Do normalnego użytku, bardzo dobre",
+        "price": 16.49
     },
     {
         "id": 3,
-        "title": "Pierla miodowa",
-        "description": "Pierla miodowa to piwko dla tych, czyj gust nie jest mordowany przez inny piwky Perla. Mózg których jest po prostu zniszczony przez te gówno. Krótko mowiąc, jako lubricant do BDSMu.",
-        "image": "0.png",
-        "volume": 500,
-        "abv": 5.2,
-        "country": "Polska",
-        "purpose": "Po 100 ml w śmietnik",
-        "price": 5.23
+        "title": "3 Floyds Brewing Company Cimmerian Sabertooth Berzerker",
+        "description": "W pozornie niekończącym się okrucieństwie, bitwach i konfliktach epoki hyboryjskiej wojownik ma tylko dwie przyjemności: dziesiątkowanie wrogów w bitwie i róg Cymeryjskiego Szablozębnego Berzerkera, który zaspokaja pragnienie zwycięstwa.",
+        "image": "3.png",
+        "volume": 1000,
+        "abv": 9.0,
+        "country": "Florida, USA",
+        "purpose": "Do normalnego użytku, bardzo dobre",
+        "price": 20.99
     },
     {
         "id": 4,
-        "title": "Pierla miodowa",
-        "description": "Pierla miodowa to piwko dla tych.",
-        "image": "0.png",
+        "title": "Funky Fauna Artisan Ales Florific",
+        "description": "With an aroma of tart lemon zest, this has a light acidity that mingles nicely with the IPA hops. In the flavor: lemongrass, catty notes, citrus zest, spicy goatiness, and a sharp, overripe fruit alongside notes of hay, dried apricot, horse blanket. Low levels of sour tartness. Prickly finishing bitterness. Finishes well-balanced and refreshing.",
+        "image": "4.png",
         "volume": 500,
-        "abv": 5.2,
-        "country": "Polska",
-        "purpose": "Po 100 ml w śmietnik",
-        "price": 5.23
+        "abv": 8.0,
+        "country": "California, USA",
+        "purpose": "Do normalnego użytku, bardzo dobre",
+        "price": 15.99
     },
     {
         "id": 5,
-        "title": "Pierla miodowa",
-        "description": "Pierla miodowa to piwko dla tych, czyj gust nie jest mordowany przez inny piwky Perla. Mózg których jest po prostu zniszczony przez te gówno. Krótko mowiąc, jako lubricant do BDSMu.",
-        "image": "0.png",
+        "title": "Melvin Brewing Galactic Compass",
+        "description": "Sweet, sweaty dankness! Tropical fruit, citrus, and spicy alcohol are second chair. Orange peel, lemon, passion fruit, and strawberry mingle with pine and a light dankness to create a complex and inviting nose. Green tea–like bitterness in the assertively bitter finish.",
+        "image": "5.png",
         "volume": 500,
-        "abv": 5.2,
-        "country": "Polska",
-        "purpose": "Po 100 ml w śmietnik",
-        "price": 5.23
+        "abv": 8.0,
+        "country": "Nevada, USA",
+        "purpose": "Raz w miesiąc można",
+        "price": 10.01
+    },
+    {
+        "id": 6,
+        "title": "Melvin Brewing Galactic Compass",
+        "description": "Sweet, sweaty dankness! Tropical fruit, citrus, and spicy alcohol are second chair. Orange peel, lemon, passion fruit, and strawberry mingle with pine and a light dankness to create a complex and inviting nose. Green tea–like bitterness in the assertively bitter finish.",
+        "image": "6.png",
+        "volume": 1000,
+        "abv": 6.0,
+        "country": "Gdzieś w USA",
+        "purpose": "Nie pic",
+        "price": 12.00
     }
 ]
